@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Sheet #7 (Recursion)
+// Contest: Semaphore
 // Judge: Codeforces
-// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/M
+// URL: https://codeforces.com/gym/536143/problem/K
 // Memory Limit: 256
 // Time Limit: 1000
-// Start: 07 أغس, 2024 10:31:39 ص
+// Start: 10 أغس, 2024 01:52:27 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,7 +19,7 @@ using namespace std;
   ios_base::sync_with_stdio(false);                                            \
   cin.tie(NULL);
 
-#define int long long
+typedef long long ll;
 #define all(a) (a).begin(), (a).end()
 #define sz(a) (int)(a).size()
 #define pb push_back
@@ -75,20 +75,9 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-int n;
-int sum = 0;
-int summation(vi &v,int &m){
-  if(m == 0)
-    return 0;
-  sum += v[--n];
-  summation(v, --m);
-  return sum;
-}
+
 void solve() {
-  int m;cin>>n>>m;
-  vi v(n);
-  cin >> v;
-  cout<<summation(v, m)<<endl;
+  cout<<MOD<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

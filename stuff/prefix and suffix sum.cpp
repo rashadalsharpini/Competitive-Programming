@@ -1,11 +1,3 @@
-// ﷽
-// Contest: Sheet #7 (Recursion)
-// Judge: Codeforces
-// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/M
-// Memory Limit: 256
-// Time Limit: 1000
-// Start: 07 أغس, 2024 10:31:39 ص
-//
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef Rashad
@@ -19,24 +11,19 @@ using namespace std;
   ios_base::sync_with_stdio(false);                                            \
   cin.tie(NULL);
 
-#define int long long
+#define ll long long
 #define all(a) (a).begin(), (a).end()
 #define sz(a) (int)(a).size()
 #define pb push_back
-#define mp make_pair
-#define f first
-#define s second
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define vll vector<ll>
 #define vi vector<int>
-#define pi pair<int,int>
-#define pll pair<long long, long long>
+#define pii pair<int,int>
 #define OO 2e9
 #define endl "\n"
 const int dx[]{0, 1, 0, -1, -1, -1, 1, 1};
 const int dy[]{1, 0, -1, 0, -1, 1, -1, 1};
-
 template <typename T> istream &operator>>(istream &input, vector<T> &data) {
   for (T &x : data)
     input >> x;
@@ -47,12 +34,12 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
     output << x << " ";
   return output;
 }
-int MOD = 1e9+7;
+int mod = 1000000007;
 int fast_power(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
+        if (b & 1) res *= a % mod;
+        a *= a % mod;
         b >>= 1;
     }
     return res;
@@ -75,20 +62,21 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-int n;
-int sum = 0;
-int summation(vi &v,int &m){
-  if(m == 0)
-    return 0;
-  sum += v[--n];
-  summation(v, --m);
-  return sum;
-}
+
 void solve() {
-  int m;cin>>n>>m;
-  vi v(n);
-  cin >> v;
-  cout<<summation(v, m)<<endl;
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  
+  vi prefixSum(n + 1, 0);
+  for(int i = 1; i <= n; ++i)
+    prefixSum[i] = prefixSum[i - 1] + v[i - 1];
+  cout<<prefixSum<<endl;
+
+  vi suffixSum(n, 0);
+  suffixSum[n - 1] = v[n - 1];
+  for(int i = n - 2;i>=0;--i)
+    suffixSum[i] = suffixSum[i + 1] + v[i];
+  cout<<suffixSum<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
