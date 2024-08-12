@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Semaphore
+// Contest: Sheet #7 (Recursion)
 // Judge: Codeforces
-// URL: https://codeforces.com/gym/536143/problem/A
+// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/R
 // Memory Limit: 256
-// Time Limit: 2000
-// Start: 12 أغس, 2024 02:57:11 م
+// Time Limit: 1000
+// Start: 12 أغس, 2024 01:24:38 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -73,23 +73,23 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
+bool print(vi& v, int r, int l){
+  if(l >= r)
+    return true;
+  if(v[r]!=v[l])
+    return false;
+  else
+  return print(v, r-1, l+1);
+
+}
 
 void solve() {
-  string s;cin>>s;
-  int big=0, small=0;
-  for(int i = 0 ;i < s.size();++i){
-    if(s[i] >= 'a' && s[i] <= 'z')
-      small++;
-    else
-      big++;
-  }
-  if(small>=big)
-    for(char& c: s)
-      c = tolower(c);
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  if(print(v, n - 1, 0))
+    cout<<"YES"<<endl;
   else
-    for(char& c: s)
-      c = toupper(c);
-  cout<< s << endl;
+    cout<<"NO"<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

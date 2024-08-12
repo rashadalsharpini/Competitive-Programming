@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Semaphore
+// Contest: Sheet #7 (Recursion)
 // Judge: Codeforces
-// URL: https://codeforces.com/gym/536143/problem/A
-// Memory Limit: 256
+// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/T
+// Memory Limit: 64
 // Time Limit: 2000
-// Start: 12 أغس, 2024 02:57:11 م
+// Start: 12 أغس, 2024 03:14:32 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,6 +20,7 @@ using namespace std;
   cin.tie(NULL);
 
 #define int long long
+#define double long double
 #define all(a) (a).begin(), (a).end()
 #define sz(a) (int)(a).size()
 #define pb push_back
@@ -46,50 +47,29 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
   return output;
 }
 int MOD = 1e9+7;
-int fast_power(int a, int b) {
-    int res = 1;
-    while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
-        b >>= 1;
-    }
-    return res;
-}
-vector<int> primeFactors(int n) {
-    vector<int> factors;
-    while (n % 2 == 0) {
-        factors.push_back(2);
-        n /= 2;
-    }
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
-        }
-    }
-    if (n > 2) {
-        factors.push_back(n);
-    }
-    return factors;
-}
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-
+/*const int MAX = 31;*/
+/*int memo[MAX][MAX];*/
+/*int nCr(int n, int r){*/
+/*  if (r == 0 || r == n)*/
+/*    return 1;*/
+/*  if(memo[n][r] != -1)*/
+/*    return memo[n][r];*/
+/*  memo[n][r] = nCr(n-1, r-1)+nCr(n-1,r);*/
+/*  return memo[n][r];*/
+/*}*/
+int fact(int n){
+  if(n<=1)
+    return 1;
+  return n * fact(n - 1);
+}
+int nCr(int n, int r){
+  return fact(n)/(fact(r)*fact(n-r));
+} 
 void solve() {
-  string s;cin>>s;
-  int big=0, small=0;
-  for(int i = 0 ;i < s.size();++i){
-    if(s[i] >= 'a' && s[i] <= 'z')
-      small++;
-    else
-      big++;
-  }
-  if(small>=big)
-    for(char& c: s)
-      c = tolower(c);
-  else
-    for(char& c: s)
-      c = toupper(c);
-  cout<< s << endl;
+  int n, r;cin>>n>>r;
+  /*memset(memo, -1, sizeof(memo));*/
+  cout<<nCr(n, r)<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

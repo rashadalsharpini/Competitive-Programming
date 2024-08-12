@@ -1,10 +1,10 @@
 // ﷽
 // Contest: Semaphore
 // Judge: Codeforces
-// URL: https://codeforces.com/gym/536143/problem/A
+// URL: https://codeforces.com/gym/536143/problem/B
 // Memory Limit: 256
-// Time Limit: 2000
-// Start: 12 أغس, 2024 02:57:11 م
+// Time Limit: 5000
+// Start: 12 أغس, 2024 03:02:14 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -75,21 +75,7 @@ vector<int> primeFactors(int n) {
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
 
 void solve() {
-  string s;cin>>s;
-  int big=0, small=0;
-  for(int i = 0 ;i < s.size();++i){
-    if(s[i] >= 'a' && s[i] <= 'z')
-      small++;
-    else
-      big++;
-  }
-  if(small>=big)
-    for(char& c: s)
-      c = tolower(c);
-  else
-    for(char& c: s)
-      c = toupper(c);
-  cout<< s << endl;
+
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

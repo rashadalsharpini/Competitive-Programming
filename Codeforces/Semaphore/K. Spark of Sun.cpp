@@ -4,7 +4,7 @@
 // URL: https://codeforces.com/gym/536143/problem/K
 // Memory Limit: 256
 // Time Limit: 1000
-// Start: 10 أغس, 2024 01:52:27 م
+// Start: 12 أغس, 2024 02:55:42 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,7 +19,7 @@ using namespace std;
   ios_base::sync_with_stdio(false);                                            \
   cin.tie(NULL);
 
-typedef long long ll;
+#define int long long
 #define all(a) (a).begin(), (a).end()
 #define sz(a) (int)(a).size()
 #define pb push_back
@@ -28,10 +28,8 @@ typedef long long ll;
 #define s second
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
-#define vll vector<ll>
 #define vi vector<int>
 #define pi pair<int,int>
-#define pll pair<long long, long long>
 #define OO 2e9
 #define endl "\n"
 const int dx[]{0, 1, 0, -1, -1, -1, 1, 1};
@@ -77,14 +75,15 @@ vector<int> primeFactors(int n) {
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
 
 void solve() {
-  cout<<MOD<<endl;
+  int x, y;cin>>x>>y;
+  cout<<1<<" "<<lcm(x, y)/gcd(x, y)<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;

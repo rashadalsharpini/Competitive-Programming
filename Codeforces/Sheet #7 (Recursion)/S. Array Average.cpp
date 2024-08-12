@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Semaphore
+// Contest: Sheet #7 (Recursion)
 // Judge: Codeforces
-// URL: https://codeforces.com/gym/536143/problem/A
+// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/S
 // Memory Limit: 256
-// Time Limit: 2000
-// Start: 12 أغس, 2024 02:57:11 م
+// Time Limit: 1000
+// Start: 12 أغس, 2024 02:54:11 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,6 +20,7 @@ using namespace std;
   cin.tie(NULL);
 
 #define int long long
+#define double long double
 #define all(a) (a).begin(), (a).end()
 #define sz(a) (int)(a).size()
 #define pb push_back
@@ -73,23 +74,17 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-
+int summation(vi& v,int n, int sum = 0){
+  if(n == 0)
+    return sum;
+  sum += v[n - 1];
+  return summation(v, n - 1, sum);
+}
 void solve() {
-  string s;cin>>s;
-  int big=0, small=0;
-  for(int i = 0 ;i < s.size();++i){
-    if(s[i] >= 'a' && s[i] <= 'z')
-      small++;
-    else
-      big++;
-  }
-  if(small>=big)
-    for(char& c: s)
-      c = tolower(c);
-  else
-    for(char& c: s)
-      c = toupper(c);
-  cout<< s << endl;
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  double result = summation(v, n) / n;
+  cout<<fixed<<setprecision(6)<<result<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
