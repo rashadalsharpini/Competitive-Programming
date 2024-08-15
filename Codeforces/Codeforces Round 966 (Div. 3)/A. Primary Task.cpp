@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Sheet #7 (Recursion)
+// Contest: Codeforces Round 966 (Div. 3)
 // Judge: Codeforces
-// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/T
-// Memory Limit: 64
-// Time Limit: 2000
-// Start: 12 أغس, 2024 03:14:32 م
+// URL: https://codeforces.com/contest/2000/problem/A
+// Memory Limit: 256
+// Time Limit: 1000
+// Start: 13 أغس, 2024 08:36:02 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -74,21 +74,29 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-int nCr(int n, int r){
-  if (r == 0 || r == n)
-    return 1;
-  return nCr(n-1, r-1)+nCr(n-1,r);
-}
+
 void solve() {
-  int n, r;cin>>n>>r;
-  cout<<nCr(n, r)<<endl;
+  string n;cin>>n;
+  if(n.size() < 3){
+    no;
+    return;
+  }
+  if(n[0]=='1' && n[1] == '0' && n[2] != '0'){
+    if(n.size() == 3 && n[2] == '1'){
+      no;
+      return;
+    }
+    yes;
+    return;
+  }
+  no;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;

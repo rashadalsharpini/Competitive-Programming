@@ -1,11 +1,3 @@
-// ﷽
-// Contest: Sheet #7 (Recursion)
-// Judge: Codeforces
-// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/T
-// Memory Limit: 64
-// Time Limit: 2000
-// Start: 12 أغس, 2024 03:14:32 م
-//
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef Rashad
@@ -74,21 +66,21 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-int nCr(int n, int r){
-  if (r == 0 || r == n)
-    return 1;
-  return nCr(n-1, r-1)+nCr(n-1,r);
-}
+
 void solve() {
-  int n, r;cin>>n>>r;
-  cout<<nCr(n, r)<<endl;
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  auto range = equal_range(v.begin(), v.end(), 1);
+  for(auto it = range.first;it!=range.second;++it)
+    cout<<*it<<endl;
 }
+
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;

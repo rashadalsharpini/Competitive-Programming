@@ -75,14 +75,32 @@ vector<int> primeFactors(int n) {
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
 
 void solve() {
-
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  int q;cin>>q;
+  vi v2(n, -1);
+  for(int i=n-2;i>=0;--i){
+    if(v[i]!=v[i+1])
+      v2[i] = i+1;
+    else
+      v2[i] = v2[i+1];
+  }
+  int s, e;
+  while(q--){
+    cin>>s>>e;
+    s--;e--;
+    if(v2[s]!=-1 && v2[s] <= e)
+      cout<<s+1<<" "<<v2[s]+1<<endl;
+    else 
+      cout<<"-1 -1"<<endl;
+  }
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;

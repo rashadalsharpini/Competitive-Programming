@@ -1,14 +1,6 @@
-// ﷽
-// Contest: Sheet #7 (Recursion)
-// Judge: Codeforces
-// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/T
-// Memory Limit: 64
-// Time Limit: 2000
-// Start: 12 أغس, 2024 03:14:32 م
-//
 #include <bits/stdc++.h>
 using namespace std;
-#ifdef Rashad
+#ifdef MOHAMED
 #include "debug.hpp"
 #else
 #define debug(...) 0
@@ -19,23 +11,19 @@ using namespace std;
   ios_base::sync_with_stdio(false);                                            \
   cin.tie(NULL);
 
-#define int long long
-#define double long double
+#define ll long long
 #define all(a) (a).begin(), (a).end()
 #define sz(a) (int)(a).size()
 #define pb push_back
-#define mp make_pair
-#define f first
-#define s second
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
+#define vll vector<ll>
 #define vi vector<int>
-#define pi pair<int,int>
+#define pii pair<int,int>
 #define OO 2e9
 #define endl "\n"
 const int dx[]{0, 1, 0, -1, -1, -1, 1, 1};
 const int dy[]{1, 0, -1, 0, -1, 1, -1, 1};
-
 template <typename T> istream &operator>>(istream &input, vector<T> &data) {
   for (T &x : data)
     input >> x;
@@ -46,12 +34,12 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
     output << x << " ";
   return output;
 }
-int MOD = 1e9+7;
+int mod = 1000000007;
 int fast_power(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
+        if (b & 1) res *= a % mod;
+        a *= a % mod;
         b >>= 1;
     }
     return res;
@@ -74,14 +62,13 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-int nCr(int n, int r){
-  if (r == 0 || r == n)
-    return 1;
-  return nCr(n-1, r-1)+nCr(n-1,r);
-}
+
 void solve() {
-  int n, r;cin>>n>>r;
-  cout<<nCr(n, r)<<endl;
+  int arr[5];
+  memset(arr, -1, sizeof arr);
+  for(int i=0;i<5;i++)
+    cout<<arr[i]<<" ";
+
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

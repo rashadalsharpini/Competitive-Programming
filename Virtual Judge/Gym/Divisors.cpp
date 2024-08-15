@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Sheet #7 (Recursion)
-// Judge: Codeforces
-// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/T
-// Memory Limit: 64
-// Time Limit: 2000
-// Start: 12 أغس, 2024 03:14:32 م
+// Contest: Gym
+// Judge: Virtual Judge
+// URL: https://vjudge.net/problem/Gym-405759K
+// Memory Limit: 256
+// Time Limit: 1000
+// Start: 14 أغس, 2024 04:42:26 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -43,7 +43,7 @@ template <typename T> istream &operator>>(istream &input, vector<T> &data) {
 }
 template <typename T> ostream &operator<<(ostream &output, const vector<T> &data) {
   for (const T &x : data)
-    output << x << " ";
+    output << x << endl;
   return output;
 }
 int MOD = 1e9+7;
@@ -74,14 +74,22 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-int nCr(int n, int r){
-  if (r == 0 || r == n)
-    return 1;
-  return nCr(n-1, r-1)+nCr(n-1,r);
+vi Factors(int n){
+  vi factors;
+  for(int i = 1;i<= sqrt(n);++i){
+    if(n%i==0){
+      factors.pb(i);
+      if(i!=n/i)
+        factors.pb(n/i);
+    }
+  }
+  sort(all(factors));
+  return factors;
 }
 void solve() {
-  int n, r;cin>>n>>r;
-  cout<<nCr(n, r)<<endl;
+  int n;cin>>n;
+  vi factors = Factors(n);
+  cout<<factors;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

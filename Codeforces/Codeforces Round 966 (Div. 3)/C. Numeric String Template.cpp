@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Sheet #7 (Recursion)
+// Contest: Codeforces Round 966 (Div. 3)
 // Judge: Codeforces
-// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/T
-// Memory Limit: 64
+// URL: https://codeforces.com/contest/2000/problem/C
+// Memory Limit: 256
 // Time Limit: 2000
-// Start: 12 أغس, 2024 03:14:32 م
+// Start: 14 أغس, 2024 04:00:14 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -74,21 +74,35 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-int nCr(int n, int r){
-  if (r == 0 || r == n)
-    return 1;
-  return nCr(n-1, r-1)+nCr(n-1,r);
-}
+
 void solve() {
-  int n, r;cin>>n>>r;
-  cout<<nCr(n, r)<<endl;
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  int m;cin>>m;
+  string s;
+  while(m--){
+    cin>>s;
+    multimap<int, char> mp;
+    if(s.size() == n){
+      for(int i=0;i<n;++i){
+        mp.insert({v[i], s[i]});
+      }
+      for(const auto& pair:mp){
+        auto range = mp.equal_range(mp.first());
+        debug(range);
+      }
+      debug(mp);
+    }else
+      no;
+  }
 }
+
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;
