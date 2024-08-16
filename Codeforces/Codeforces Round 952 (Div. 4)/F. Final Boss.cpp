@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Codeforces Round 966 (Div. 3)
+// Contest: Codeforces Round 952 (Div. 4)
 // Judge: Codeforces
-// URL: https://codeforces.com/contest/2000/problem/C
+// URL: https://codeforces.com/contest/1985/problem/F
 // Memory Limit: 256
 // Time Limit: 2000
-// Start: 14 أغس, 2024 04:00:14 م
+// Start: 15 أغس, 2024 03:51:20 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -76,46 +76,17 @@ vector<int> primeFactors(int n) {
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
 
 void solve() {
-  int n;cin>>n;
-  vi v(n);cin>>v;
-  int m;cin>>m;
-  string s;
-  while(m--){
-    cin>>s;
-    vector<pair<int, char>> mp;
-    vector<pair<char, int>> mpr;
-    bool shit = false;
-    bool shit1 = false;
-    if(s.size() == n){
-      for(int i=0;i<n;++i){
-        mp.pb({v[i], s[i]});
-        mpr.pb({s[i], v[i]});
-      }
-      sort(all(mp));
-      sort(all(mpr));
-      for(int i = 0;i<n-1;++i){
-        if(mp[i].first == mp[i+1].first && mp[i].second != mp[i+1].second){
-          shit = true;
-          break;
-        }
-        if(mpr[i].first == mpr[i+1].first && mpr[i].second != mpr[i+1].second){
-          shit1 = true;
-          break;
-        }
-
-      }
-      if(shit || shit1){
-        no;
-        continue;
-      }
-    }else{
-      no;
-      continue;
-    }
-    yes;
+  int h, n;cin>>h>>n;
+  vector<pair<int, int>> v(n);
+  for(int i = 0;i<n;++i){
+    cin>>v[i].first;
+    h -= v[i].first;
   }
-}
+  for(int i = 0;i<n;++i)
+    cin>>v[i].second;
+  if(h <= 0){cout<<1<<endl;return;}
 
+}
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);

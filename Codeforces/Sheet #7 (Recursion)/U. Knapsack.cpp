@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Codeforces Round 966 (Div. 3)
+// Contest: Sheet #7 (Recursion)
 // Judge: Codeforces
-// URL: https://codeforces.com/contest/2000/problem/C
+// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/U
 // Memory Limit: 256
 // Time Limit: 2000
-// Start: 14 أغس, 2024 04:00:14 م
+// Start: 16 أغس, 2024 10:45:59 ص
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -74,54 +74,34 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
+const int max_n = 20;
+int memo[20][1000];
+int weights[max_n], values[max_n];
+int n, w;
+int knapsack(int index, int rem){
+  if(index == n || rem == 0)
+    return 0;
+  if(memo[index][rem] != -1)return memo[index][rem];
+  if(weights[index] > rem)
+    return knapsack(index + 1, rem);
+  int include = values[index] + knapsack(index+1, rem - weights[index]);
+  int exclude =  knapsack(index+1, rem);
+  return memo[index][rem] = max(include, exclude);
 
-void solve() {
-  int n;cin>>n;
-  vi v(n);cin>>v;
-  int m;cin>>m;
-  string s;
-  while(m--){
-    cin>>s;
-    vector<pair<int, char>> mp;
-    vector<pair<char, int>> mpr;
-    bool shit = false;
-    bool shit1 = false;
-    if(s.size() == n){
-      for(int i=0;i<n;++i){
-        mp.pb({v[i], s[i]});
-        mpr.pb({s[i], v[i]});
-      }
-      sort(all(mp));
-      sort(all(mpr));
-      for(int i = 0;i<n-1;++i){
-        if(mp[i].first == mp[i+1].first && mp[i].second != mp[i+1].second){
-          shit = true;
-          break;
-        }
-        if(mpr[i].first == mpr[i+1].first && mpr[i].second != mpr[i+1].second){
-          shit1 = true;
-          break;
-        }
-
-      }
-      if(shit || shit1){
-        no;
-        continue;
-      }
-    }else{
-      no;
-      continue;
-    }
-    yes;
-  }
 }
-
+void solve() {
+  cin>>n>>w;
+  memset(memo, -1, sizeof memo);
+  for(int i =0;i<n;++i)
+    cin>>weights[i]>>values[i];
+  cout<<knapsack(0, w)<<endl;
+}
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    cin>>t;
+    /*cin>>t;*/
     while (t--)
         solve();
     return 0;
