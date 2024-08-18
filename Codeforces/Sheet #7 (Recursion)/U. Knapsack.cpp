@@ -76,7 +76,7 @@ vector<int> primeFactors(int n) {
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
 const int max_n = 20;
 int memo[20][1000];
-int weights[max_n], values[max_n];
+int weights[max_n], profit[max_n];
 int n, w;
 int knapsack(int index, int rem){
   if(index == n || rem == 0)
@@ -84,7 +84,7 @@ int knapsack(int index, int rem){
   if(memo[index][rem] != -1)return memo[index][rem];
   if(weights[index] > rem)
     return knapsack(index + 1, rem);
-  int include = values[index] + knapsack(index+1, rem - weights[index]);
+  int include = profit[index] + knapsack(index+1, rem - weights[index]);
   int exclude =  knapsack(index+1, rem);
   return memo[index][rem] = max(include, exclude);
 
@@ -93,7 +93,7 @@ void solve() {
   cin>>n>>w;
   memset(memo, -1, sizeof memo);
   for(int i =0;i<n;++i)
-    cin>>weights[i]>>values[i];
+    cin>>weights[i]>>profit[i];
   cout<<knapsack(0, w)<<endl;
 }
 int32_t main() {
