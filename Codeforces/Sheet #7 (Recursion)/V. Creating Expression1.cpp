@@ -1,10 +1,10 @@
 // ﷽
-// Contest: CSES Problem Set
-// Judge: CSES
-// URL: https://cses.fi/problemset/task/1620
-// Memory Limit: 512
+// Contest: Sheet #7 (Recursion)
+// Judge: Codeforces
+// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/V
+// Memory Limit: 256
 // Time Limit: 1000
-// Start: 15 أغس, 2024 04:12:36 م
+// Start: 16 أغس, 2024 03:38:11 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -74,12 +74,25 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-
-void solve() {
-  int n, t;cin>>n>>t;
-  vi v(n);cin>>v;
-    
-
+int arr[1000];
+int n, t;
+bool can(int index, int cur){
+  if(index == n)
+    return cur == t;
+  if(can(index + 1, cur + arr[index]))
+    return true;
+  if(can(index + 1, cur - arr[index]))
+    return true;
+  return false;
+}
+void solve(){
+  cin>>n>>t;
+  for(int i = 0;i<n;++i)
+    cin>>arr[i];
+  if(can(1, arr[0]))
+    yes;
+  else 
+    no;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

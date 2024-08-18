@@ -70,6 +70,13 @@ void solve() {
   cout<<v<<endl;
   sort(v.begin(), v.end()); // small to big
   cout<<v<<endl;
+  vector<vi> vv;
+  vi x(5);
+  for(int i =0;i<5;++i){
+    cin>>x;
+    vv.pb(x);
+  }
+  debug(vv);
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);

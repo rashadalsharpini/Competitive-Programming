@@ -1,10 +1,10 @@
 // ﷽
-// Contest: CSES Problem Set
-// Judge: CSES
-// URL: https://cses.fi/problemset/task/1620
-// Memory Limit: 512
+// Contest: Sheet #7 (Recursion)
+// Judge: Codeforces
+// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/W
+// Memory Limit: 256
 // Time Limit: 1000
-// Start: 15 أغس, 2024 04:12:36 م
+// Start: 17 أغس, 2024 04:16:10 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -56,8 +56,8 @@ int fast_power(int a, int b) {
     }
     return res;
 }
-vector<int> primeFactors(int n) {
-    vector<int> factors;
+vi primeFactors(int n) {
+    vi factors;
     while (n % 2 == 0) {
         factors.push_back(2);
         n /= 2;
@@ -74,19 +74,26 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-
+bool can(int init, int n){
+  if(init == n)
+    return true;
+  if(init > n)
+    return false;
+  return can(init * 10, n) || can(init * 20, n);
+}
 void solve() {
-  int n, t;cin>>n>>t;
-  vi v(n);cin>>v;
-    
-
+  int n;cin>>n;
+  if(can(1, n))
+    yes;
+  else 
+    no;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;

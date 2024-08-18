@@ -1,10 +1,10 @@
 // ﷽
-// Contest: CSES Problem Set
-// Judge: CSES
-// URL: https://cses.fi/problemset/task/1620
-// Memory Limit: 512
+// Contest: Sheet #7 (Recursion)
+// Judge: Codeforces
+// URL: https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/X
+// Memory Limit: 256
 // Time Limit: 1000
-// Start: 15 أغس, 2024 04:12:36 م
+// Start: 17 أغس, 2024 04:30:38 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -56,8 +56,8 @@ int fast_power(int a, int b) {
     }
     return res;
 }
-vector<int> primeFactors(int n) {
-    vector<int> factors;
+vi primeFactors(int n) {
+    vi factors;
     while (n % 2 == 0) {
         factors.push_back(2);
         n /= 2;
@@ -74,12 +74,23 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-
+int n, m;
+int arr[10][10];
+int maxPath(int i, int j){
+  if(i == n - 1 && j == m - 1)
+    return arr[i][j];
+  if(i >= n || j >= m)
+    return -1e6;
+  int down = maxPath(i+1, j);
+  int right = maxPath(i, j + 1);
+  return arr[i][j] + max(down, right);
+}
 void solve() {
-  int n, t;cin>>n>>t;
-  vi v(n);cin>>v;
-    
-
+  cin >> n >> m;
+  for(int i = 0;i<n;++i)
+    for(int j = 0;j<m;++j)
+      cin>>arr[i][j];
+  cout<<maxPath(0, 0)<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
