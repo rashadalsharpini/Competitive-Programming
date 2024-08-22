@@ -66,22 +66,24 @@ vi primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65 - 90 -> A-Z 97 - 122 -> a-z
-const int N = 1000;
-int x, k[] = {1,5,10,20,50};
-int memo[N][5];
+int k[1000];
+int memo[1005][1005];
 int coinChange(int x, int n){
   if(x==0)return 1;
   if(n==-1)return 0;
   if(memo[x][n] != -1) return memo[x][n];
-  int op1 = k[n] <= x ? coinChange(x-k[n], n) : 0;
-  int op2 = coinChange(x, n - 1);
-  return memo[x][n] = op1 + op2;
+  int include = k[n] <= x ? coinChange(x-k[n], n) : 0;
+  int exclude = coinChange(x, n - 1);
+  return memo[x][n] = include + exclude;
   
 }
 void solve() {
+  int x, size;
+  cin>>x>>size;
+  for(int i = 0;i<size;++i)
+    cin>>k[i];
   memset(memo, -1, sizeof memo);
-  cin>>x;
-  cout<<coinChange(x,4)<<endl;
+  cout<<coinChange(x,size - 1)<<endl;
 }
 
 int32_t main() {
