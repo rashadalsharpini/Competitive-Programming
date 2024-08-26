@@ -1,6 +1,14 @@
+// ﷽
+// Contest: Codeforces Round 968 (Div. 2)
+// Judge: Codeforces
+// URL: https://codeforces.com/contest/2003/problem/B
+// Memory Limit: 256
+// Time Limit: 1000
+// Start: 25 أغس, 2024 05:40:16 م
+//
 #include <bits/stdc++.h>
 using namespace std;
-#ifdef MOHAMED
+#ifdef Rashad
 #include "debug.hpp"
 #else
 #define debug(...) 0
@@ -11,19 +19,23 @@ using namespace std;
   ios_base::sync_with_stdio(false);                                            \
   cin.tie(NULL);
 
-#define ll long long
+#define int long long
+#define double long double
 #define all(a) (a).begin(), (a).end()
 #define sz(a) (int)(a).size()
 #define pb push_back
+#define mp make_pair
+#define f first
+#define s second
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
-#define vll vector<ll>
 #define vi vector<int>
-#define pii pair<int,int>
+#define pi pair<int,int>
 #define OO 2e9
 #define endl "\n"
 const int dx[]{0, 1, 0, -1, -1, -1, 1, 1};
 const int dy[]{1, 0, -1, 0, -1, 1, -1, 1};
+
 template <typename T> istream &operator>>(istream &input, vector<T> &data) {
   for (T &x : data)
     input >> x;
@@ -34,18 +46,18 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
     output << x << " ";
   return output;
 }
-int mod = 1000000007;
+int MOD = 1e9+7;
 int fast_power(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1) res *= a % mod;
-        a *= a % mod;
+        if (b & 1) res *= a % MOD;
+        a *= a % MOD;
         b >>= 1;
     }
     return res;
 }
-vector<int> primeFactors(int n) {
-    vector<int> factors;
+vi primeFactors(int n) {
+    vi factors;
     while (n % 2 == 0) {
         factors.push_back(2);
         n /= 2;
@@ -61,22 +73,21 @@ vector<int> primeFactors(int n) {
     }
     return factors;
 }
-// 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
+// 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-  /*int arr[5];*/
-  /*memset(arr, -1, sizeof arr);*/
-  /*for(int i=0;i<5;i++)*/
-  /*  cout<<arr[i]<<" ";*/
-cout<<5/2<<endl;
-cout<<7/2<<endl;
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  sort(all(v));
+  debug(v);
+  cout<<v[n/2]<<endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;
