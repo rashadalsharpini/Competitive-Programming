@@ -1,3 +1,11 @@
+// ﷽
+// Contest: Standard #2 (binary search , stack , queue, deque , priority queue)
+// Judge: Codeforces
+// URL: https://codeforces.com/group/c3FDl9EUi9/contest/263096/problem/F
+// Memory Limit: 256
+// Time Limit: 1000
+// Start: 31 أغس, 2024 11:22:00 ص
+//
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef Rashad
@@ -66,35 +74,33 @@ vi primeFactors(int n) {
     return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-/*cout the index like this cout<<it - v.begin()<<endl;*/
+
 void solve() {
-  int n, q;cin>>n>>q;
-  vi v(n);cin>>v;
+  int q;cin>>q;
   string s;
   int value;
-  sort(all(v));
+  deque<int> de;
   while(q--){
-    cin>>s>>value;
-    if(s == "binary_search"){
-      if(binary_search(all(v), value))
-        cout<<"found"<<endl;
-      else 
-        cout<<"not found"<<endl;
-    }else if(s == "lower_bound"){
-      auto it = lower_bound(all(v), value);
-      if(it != v.end())
-        cout<<it - v.begin()<<endl;
-      else 
-        cout<<-1<<endl;
-    }else if(s == "upper_bound"){
-      auto it = upper_bound(all(v), value);
-      if(it != v.end())
-        cout<<it - v.begin()<<endl;
-      else
-        cout<<-1<<endl;
+    cin>>s;
+    if(s == "push_back"){
+      cin>>value;
+      de.push_back(value);
+    }else if(s == "push_front"){
+      cin>>value;
+      de.push_front(value);
+    }else if(s == "pop_front"){
+      de.pop_front();
+    }else if(s == "pop_back"){
+      de.pop_back();
+    }else if(s == "front"){
+      cout<<de.front()<<endl;
+    }else if(s == "back"){
+      cout<<de.back()<<endl;
+    }else{
+      cin>>value;
+      cout<<de[value - 1]<<endl;
     }
   }
-
 }
 int32_t main() {
     /*freopen("whereami.in", "r", stdin);*/

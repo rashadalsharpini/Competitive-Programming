@@ -98,6 +98,8 @@ void solve() {
         greater_count[i]++;
     }
   }
+  debug(less_count);
+  debug(greater_count);
   while(q--){
     cin>>x;
     cout << less_count[x - 1] << " " << greater_count[x + 1] << endl;

@@ -1,3 +1,11 @@
+// ﷽
+// Contest: Standard #2 (binary search , stack , queue, deque , priority queue)
+// Judge: Codeforces
+// URL: https://codeforces.com/group/c3FDl9EUi9/contest/263096/problem/C
+// Memory Limit: 256
+// Time Limit: 1000
+// Start: 29 أغس, 2024 05:20:09 م
+//
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef Rashad
@@ -66,33 +74,21 @@ vi primeFactors(int n) {
     return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-/*cout the index like this cout<<it - v.begin()<<endl;*/
+
 void solve() {
   int n, q;cin>>n>>q;
-  vi v(n);cin>>v;
-  string s;
-  int value;
-  sort(all(v));
+  string s;cin>>s;
+  string choice;
+  int x;
   while(q--){
-    cin>>s>>value;
-    if(s == "binary_search"){
-      if(binary_search(all(v), value))
-        cout<<"found"<<endl;
-      else 
-        cout<<"not found"<<endl;
-    }else if(s == "lower_bound"){
-      auto it = lower_bound(all(v), value);
-      if(it != v.end())
-        cout<<it - v.begin()<<endl;
-      else 
-        cout<<-1<<endl;
-    }else if(s == "upper_bound"){
-      auto it = upper_bound(all(v), value);
-      if(it != v.end())
-        cout<<it - v.begin()<<endl;
-      else
-        cout<<-1<<endl;
-    }
+    cin>>choice>>x; 
+    if(choice == "next_permutation")
+      for(int i = 0;i<x;++i)
+        next_permutation(all(s));
+    else if(choice == "prev_permutation")
+      for(int i = 0;i<x;++i)
+        prev_permutation(all(s)); 
+    cout << s << endl;
   }
 
 }
