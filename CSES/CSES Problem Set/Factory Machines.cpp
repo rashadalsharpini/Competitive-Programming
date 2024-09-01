@@ -74,12 +74,34 @@ vector<int> primeFactors(int n) {
     return factors;
 }
 // 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
-
+bool isValid(vi& machines, int t, int time){
+  int total = 0;
+  for(int k :machines){
+    total += time / k;
+    if(total >= t) return true;
+  }
+  return total >= t;
+}
+int binary(vi& v, int t){
+  int left = 1;
+  int right = v[v.size() - 1] * t;
+  int result = right;
+  while(left<=right){
+    int mid = left + (right-left)/2;
+    if(isValid(v, t, mid)){
+      result = mid;
+      right = mid - 1;
+    }else {
+      left = mid + 1;
+    }
+  }
+  return result;
+}
 void solve() {
   int n, t;cin>>n>>t;
   vi v(n);cin>>v;
-    
-
+  sort(all(v));
+  cout << binary(v, t) << endl;
 }
 int32_t main() {
     //  freopen("whereami.in", "r", stdin);
