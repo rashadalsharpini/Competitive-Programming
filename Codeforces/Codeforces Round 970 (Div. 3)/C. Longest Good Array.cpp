@@ -93,11 +93,11 @@ int findMaxK(int l, int r) {
             right = mid - 1;
         }
     }
-    return bestK + 1;
+    return bestK;
 }
 void solve() {
   int l, r;cin>>l>>r;
-  cout<<findMaxK(l, r) - 1<<endl;
+  cout<<findMaxK(l, r)<<endl;
 }
 int32_t main() {
     /*freopen("whereami.in", "r", stdin);*/
