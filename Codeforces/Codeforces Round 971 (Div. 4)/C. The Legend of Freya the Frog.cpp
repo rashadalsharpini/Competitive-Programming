@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Codeforces Round 970 (Div. 3)
+// Contest: Codeforces Round 971 (Div. 4)
 // Judge: Codeforces
-// URL: https://codeforces.com/contest/2008/problem/B
+// URL: https://codeforces.com/contest/2009/problem/C
 // Memory Limit: 256
 // Time Limit: 2000
-// Start: 03 سبت, 2024 10:35:41 م
+// Start: 03 سبت, 2024 06:01:41 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -27,8 +27,8 @@ cin.tie(NULL);
 #define mp make_pair
 #define f first
 #define s second
-#define yes cout << "Yes\n"
-#define no cout << "No\n"
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
 #define vi vector<int>
 #define pi pair<int,int>
 #define OO 2e9
@@ -74,54 +74,21 @@ vi primeFactors(int n) {
   return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
+// Function to calculate the minimum number of moves required
+int min_moves_to_target(long long x, long long y, long long k) {
+    // Calculate the minimum number of moves in x and y directions
+    long long moves_x = (x + k - 1) / k; // Equivalent to ceil(x / k)
+    long long moves_y = (y + k - 1) / k; // Equivalent to ceil(y / k)
+    
+    // The total number of moves required considering alternating directions
+    // If we need more moves in one direction, ensure we account for that
+    return (moves_x + moves_y) + (moves_x + moves_y - 1);
+}void solve() {
+  long long x, y, k;
+        cin >> x >> y >> k;
 
-void solve() {
-  int n;cin>>n;
-  string s;cin>>s;
-  int dump = sqrt(n);
-  if(dump*dump != n){
-    no;
-    return;
-  }
-  char arr[dump][dump];
-  for(int i =0;i<dump;++i)
-    for(int j=0;j<dump;++j)
-      arr[i][j] = s[i * dump +j];
+cout << min_moves_to_target(x, y, k) << endl;}
 
-  bool isValid = true;
-  // top and bottom
-  for (int i = 0; i < dump; ++i) {
-    if (arr[0][i] != '1' || arr[dump - 1][i] != '1') {
-      isValid = false;
-      break;
-    }
-  } 
-  // left and right
-  for (int i = 1; i < dump - 1; ++i) {
-    for (int j = 1; j < dump - 1; ++j) {
-      if (arr[i][j] != '0') {
-        isValid = false;
-        break;
-      }
-    }
-    if (!isValid) break;
-  }
-  // inner
-  for (int i = 1; i < dump - 1; ++i) {
-    for (int j = 1; j < dump - 1; ++j) {
-      if (arr[i][j] != '0') {
-        isValid = false;
-        break;
-      }
-    }
-    if (!isValid) break;
-  }  
-  if(isValid)
-    yes;
-  else 
-    no;
-
-}
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
   /*freopen("whereami.out", "w", stdout);*/
