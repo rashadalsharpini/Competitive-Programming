@@ -4,7 +4,7 @@
 // URL: https://codeforces.com/contest/2009/problem/C
 // Memory Limit: 256
 // Time Limit: 2000
-// Start: 03 سبت, 2024 06:01:41 م
+// Start: 06 سبت, 2024 04:34:21 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -74,21 +74,19 @@ vi primeFactors(int n) {
   return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-// Function to calculate the minimum number of moves required
-int min_moves_to_target(long long x, long long y, long long k) {
-    // Calculate the minimum number of moves in x and y directions
-    long long moves_x = (x + k - 1) / k; // Equivalent to ceil(x / k)
-    long long moves_y = (y + k - 1) / k; // Equivalent to ceil(y / k)
-    
-    // The total number of moves required considering alternating directions
-    // If we need more moves in one direction, ensure we account for that
-    return (moves_x + moves_y) + (moves_x + moves_y - 1);
-}void solve() {
-  long long x, y, k;
-        cin >> x >> y >> k;
 
-cout << min_moves_to_target(x, y, k) << endl;}
 
+void solve() {
+  double x, y, k;
+  cin >> x >> y >> k;
+  int a = ceil(x / k);
+  int b = ceil(y / k);
+
+  if (a > b) {
+    cout << max(a, b) * 2 - 1 << endl;
+  } else
+    cout << max(a, b) * 2 << endl;
+}
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
   /*freopen("whereami.out", "w", stdout);*/

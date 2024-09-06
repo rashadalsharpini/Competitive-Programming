@@ -1,10 +1,10 @@
 // ﷽
 // Contest: Codeforces Round 971 (Div. 4)
 // Judge: Codeforces
-// URL: https://codeforces.com/contest/2009/problem/0
+// URL: https://codeforces.com/contest/2009/problem/A
 // Memory Limit: 256
 // Time Limit: 1000
-// Start: 03 سبت, 2024 05:36:06 م
+// Start: 04 سبت, 2024 09:47:16 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -15,9 +15,9 @@ using namespace std;
 #define debug_itr(...) 0
 #define debug_bits(...) 0
 #endif
-#define fastio                                                               \
+#define rashad                                                               \
   ios_base::sync_with_stdio(false);                                            \
-  cin.tie(NULL);
+cin.tie(NULL);
 
 #define int long long
 #define double long double
@@ -48,30 +48,30 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
 }
 int MOD = 1e9+7;
 int fast_power(int a, int b) {
-    int res = 1;
-    while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
-        b >>= 1;
-    }
-    return res;
+  int res = 1;
+  while (b) {
+    if (b & 1) res *= a % MOD;
+    a *= a % MOD;
+    b >>= 1;
+  }
+  return res;
 }
 vi primeFactors(int n) {
-    vi factors;
-    while (n % 2 == 0) {
-        factors.push_back(2);
-        n /= 2;
+  vi factors;
+  while (n % 2 == 0) {
+    factors.push_back(2);
+    n /= 2;
+  }
+  for (int i = 3; i <= sqrt(n); i += 2) {
+    while (n % i == 0) {
+      factors.push_back(i);
+      n /= i;
     }
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
-        }
-    }
-    if (n > 2) {
-        factors.push_back(n);
-    }
-    return factors;
+  }
+  if (n > 2) {
+    factors.push_back(n);
+  }
+  return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
@@ -80,12 +80,12 @@ void solve() {
   cout<<b-a<<endl;
 }
 int32_t main() {
-    /*freopen("whereami.in", "r", stdin);*/
-    /*freopen("whereami.out", "w", stdout);*/
-    fastio
+  /*freopen("whereami.in", "r", stdin);*/
+  /*freopen("whereami.out", "w", stdout);*/
+  rashad
     int t = 1;
-    cin>>t;
-    while (t--)
-        solve();
-    return 0;
+  cin>>t;
+  while (t--)
+    solve();
+  return 0;
 }
