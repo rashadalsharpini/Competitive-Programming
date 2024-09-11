@@ -17,7 +17,7 @@ using namespace std;
 #endif
 #define fastio                                                               \
   ios_base::sync_with_stdio(false);                                            \
-  cin.tie(NULL);
+cin.tie(NULL);
 
 #define int long long
 #define double long double
@@ -48,43 +48,84 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
 }
 int MOD = 1e9+7;
 int fast_power(int a, int b) {
-    int res = 1;
-    while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
-        b >>= 1;
-    }
-    return res;
+  int res = 1;
+  while (b) {
+    if (b & 1) res *= a % MOD;
+    a *= a % MOD;
+    b >>= 1;
+  }
+  return res;
 }
 vi primeFactors(int n) {
-    vi factors;
-    while (n % 2 == 0) {
-        factors.push_back(2);
-        n /= 2;
+  vi factors;
+  while (n % 2 == 0) {
+    factors.push_back(2);
+    n /= 2;
+  }
+  for (int i = 3; i <= sqrt(n); i += 2) {
+    while (n % i == 0) {
+      factors.push_back(i);
+      n /= i;
     }
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
-        }
-    }
-    if (n > 2) {
-        factors.push_back(n);
-    }
-    return factors;
+  }
+  if (n > 2) {
+    factors.push_back(n);
+  }
+  return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
+vector<int> num;
+vector<char> sign;
+int n;
+int minChanges(int indx, int sum) {
+    if (indx == n) {
+        if (sum == 0) return 0;
+        return INT_MAX;
+    }
+
+    int ret = INT_MAX;
+    if (indx - 1 >= 0) {
+        if (sign[indx - 1] == '+') {
+            ret = min(ret, minChanges(indx + 1, sum + num[indx]));
+        } else {
+            ret = min(ret, minChanges(indx + 1, sum - num[indx]));
+        }
+    }
+
+    // Case 2: Change the current operator
+    if (indx - 1 >= 0) {
+        if (sign[indx - 1] == '+') {
+            ret = min(retr minChanges(indx + 1, sum - num[indx]) + 1);
+        } else {
+            ret = min(ret, minChanges(indx + 1, sum + num[indx]) + 1);
+        }
+    }
+
+    return ret;
+}
 
 void solve() {
-
+    cin >> n;
+    cin.ignore();
+    string s;
+    getline(cin, s);
+    for (char c : s) {
+        if (c >= '0' && c <= '9') {
+            num.pb(c - '0');
+        } else if (c == '+' || c == '-') {
+            sign.pb(c);
+        }
+    }
+    int result = minChanges(1, num[0]);
+    cout << (result == INT_MAX ? -1 : result) << endl;
 }
 int32_t main() {
-    //  freopen("whereami.in", "r", stdin);
-    //  freopen("whereami.out", "w", stdout);
-    fastio
+  //  freopen("whereami.in", "r", stdin);
+  //  freopen("whereami.out", "w", stdout);
+  fastio
     int t = 1;
-    /*cin>>t;*/
-    while (t--)
-        solve();
-    return 0;
+  /*cin>>t;*/
+  while (t--)
+    solve();
+  return 0;
 }

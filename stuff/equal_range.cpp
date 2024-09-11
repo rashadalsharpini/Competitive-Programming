@@ -70,9 +70,8 @@ vector<int> primeFactors(int n) {
 void solve() {
   int n;cin>>n;
   vi v(n);cin>>v;
-  auto range = equal_range(v.begin(), v.end(), 1);
-  for(auto it = range.first;it!=range.second;++it)
-    cout<<*it<<endl;
+  auto range = equal_range(v.begin(), v.end(), 4);
+  cout<<range.first - v.begin()<<endl<<range.second - v.begin()<<endl;
 }
 
 int32_t main() {
@@ -80,7 +79,7 @@ int32_t main() {
     //  freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    cin>>t;
+    /*cin>>t;*/
     while (t--)
         solve();
     return 0;

@@ -79,9 +79,7 @@ void solve() {
   int n, x;
   cin >> n >> x;
   vector<int> v(n);
-  for (int i = 0; i < n; ++i) {
-    cin >> v[i];
-  }
+  cin>>v;
   sort(v.begin(), v.end());
   int left = 0, right = n - 1;
   int box = 0;

@@ -83,6 +83,8 @@ void solve() {
     cin>>v[i];
     count[v[i]]++;
   }
+  debug(v);
+  debug(count);
   int dis = count.size();
   int same = 0;
   for(auto &[skill, freq] : count)
