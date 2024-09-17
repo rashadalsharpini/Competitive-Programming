@@ -50,8 +50,7 @@ def check(n):
     return 16 == int(n[0]) + int(n[1])+ int(n[2]) and 16 == int(n[3]) + int(n[4]) + int(n[5])
 
 def solve():
-    n = input()
-    nn = int(n)
+    nn = int(input())
     flag = False
     for i in range(nn, nn + 200):
         if check(str(i)):
