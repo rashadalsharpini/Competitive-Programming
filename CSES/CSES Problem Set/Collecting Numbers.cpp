@@ -89,6 +89,23 @@ void solve() {
       rounds++;
   cout<<rounds<<endl;
 }
+void solve2(){
+  int n;cin>>n;
+  vi v(n);cin>>v;
+  int l=0,r=n-1;
+  int count =0;
+  while(l<r){
+    if(v[l]<v[r]){
+      count++;
+      l++;
+      r--;
+    }else {
+      count++;
+      l++;
+    }
+  }
+  cout<<count<<endl;
+}
 int32_t main() {
     /*freopen("whereami.in", "r", stdin);*/
     /*freopen("whereami.out", "w", stdout);*/
@@ -96,6 +113,6 @@ int32_t main() {
     int t = 1;
     /*cin>>t;*/
     while (t--)
-        solve();
+        solve2();
     return 0;
 }
