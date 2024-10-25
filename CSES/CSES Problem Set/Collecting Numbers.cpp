@@ -77,12 +77,13 @@ vi primeFactors(int n) {
 
 void solve() {
   int n;cin>>n;
-  vi v(n);
   map<int, int>pos;
+  int x;
   for (int i = 0; i < n; i++) {
-    cin>>v[i];
-    pos[v[i]]=i;
+    cin>>x;
+    pos[x]=i;
   }
+  debug(pos);
   int rounds=1;
   for (int i = 2; i <= n; i++) 
     if(pos[i]<pos[i-1])
@@ -113,6 +114,6 @@ int32_t main() {
     int t = 1;
     /*cin>>t;*/
     while (t--)
-        solve2();
+        solve();
     return 0;
 }

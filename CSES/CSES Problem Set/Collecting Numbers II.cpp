@@ -17,7 +17,7 @@ using namespace std;
 #endif
 #define fastio                                                               \
   ios_base::sync_with_stdio(false);                                            \
-  cin.tie(NULL);
+cin.tie(NULL);
 
 #define int long long
 #define double long double
@@ -48,61 +48,78 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
 }
 int MOD = 1e9+7;
 int fast_power(int a, int b) {
-    int res = 1;
-    while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
-        b >>= 1;
-    }
-    return res;
+  int res = 1;
+  while (b) {
+    if (b & 1) res *= a % MOD;
+    a *= a % MOD;
+    b >>= 1;
+  }
+  return res;
 }
 vi primeFactors(int n) {
-    vi factors;
-    while (n % 2 == 0) {
-        factors.push_back(2);
-        n /= 2;
+  vi factors;
+  while (n % 2 == 0) {
+    factors.push_back(2);
+    n /= 2;
+  }
+  for (int i = 3; i <= sqrt(n); i += 2) {
+    while (n % i == 0) {
+      factors.push_back(i);
+      n /= i;
     }
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
-        }
-    }
-    if (n > 2) {
-        factors.push_back(n);
-    }
-    return factors;
+  }
+  if (n > 2) {
+    factors.push_back(n);
+  }
+  return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
+const int maxN = 2e5+5;
+
+int N, M, cnt, x[maxN], pos[maxN];
+
+void update(int a, int b){
+  if(pos[x[a]-1] <= pos[x[a]] && b < pos[x[a]-1]) cnt++;
+  if(pos[x[a]-1] > pos[x[a]] && b >= pos[x[a]-1]) cnt--;
+  if(pos[x[a]+1] >= pos[x[a]] && b > pos[x[a]+1]) cnt++;
+  if(pos[x[a]+1] < pos[x[a]] && b <= pos[x[a]+1]) cnt--;
+  pos[x[a]] = b;
+
+  if(pos[x[b]-1] <= pos[x[b]] && a < pos[x[b]-1]) cnt++;
+  if(pos[x[b]-1] > pos[x[b]] && a >= pos[x[b]-1]) cnt--;
+  if(pos[x[b]+1] >= pos[x[b]] && a > pos[x[b]+1]) cnt++;
+  if(pos[x[b]+1] < pos[x[b]] && a <= pos[x[b]+1]) cnt--;
+  pos[x[b]] = a;
+
+  swap(x[a], x[b]);
+}
 void solve(){
-  int n,m;cin>>n>>m;
-  vi v(n);cin>>v;
-  map<int, int>pos;
-  int x, y;
-  while(m--){
-    cin>>x>>y;
-    x--;y--;
-    int round = 1;
-    swap(v[x], v[y]);
-    for (int i = 0; i < n; i++) {
-      pos[v[i]] = i;
-    }
-    for (int i = 2; i <= n; i++) {
-      if(pos[i]<pos[i-1])
-        round++;
-    }
-    cout<<round<<endl;
-    pos.clear();
+  cin>>N>>M;
+  for(int i=1;i<=N;++i){
+    cin>>x[i];
+    pos[x[i]]=i;
+  }
+  pos[N+1]=N+1;
+  cnt=1;
+  for(int i = 1, ptr = 0; i <= N; i++){
+    if(ptr > pos[i])
+      cnt++;
+    ptr = pos[i];
+  }
+  for(int i=0,a,b;i<M;++i){
+    cin>>a>>b;
+    update(a, b);
+    cout<<cnt<<endl;
   }
 }
 
 int32_t main() {
-    /*freopen("whereami.in", "r", stdin);*/
-    /*freopen("whereami.out", "w", stdout);*/
-    fastio
+  /*freopen("whereami.in", "r", stdin);*/
+  /*freopen("whereami.out", "w", stdout);*/
+  fastio
     int t = 1;
-    /*cin>>t;*/
-    while (t--)
-        solve();
-    return 0;
+  /*cin>>t;*/
+  while (t--)
+    solve();
+  return 0;
 }
