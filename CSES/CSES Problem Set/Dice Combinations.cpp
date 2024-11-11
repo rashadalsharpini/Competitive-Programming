@@ -82,7 +82,7 @@ void solve() {
     for (int j = 1; j <= 6; j++)  
       if (i - j >= 0)  
         dp[i] = (dp[i] + dp[i - j]) % MOD;
-
+  debug(dp);
   cout << dp[n] << endl;
 }
 int32_t main() {
