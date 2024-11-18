@@ -77,17 +77,23 @@ vi primeFactors(int n) {
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-int x, y; cin >> x; 
-        bitset<32> xx = x; 
-        for (int i = 32; i >= 0; i--) { 
-            if (xx[i] == 1) { 
-                y = pow(2, i); 
-            } 
-        } 
-        while ((x ^ y) <= 0 || (x & y) <= 0) { 
-            y++; 
-        } 
-        cout << y << "\n"; }
+  int x;cin>>x;
+  int xo;
+  int an;
+  if(x==1){
+    cout<<3<<endl;
+  }else {
+    int ans=1;
+    while (ans<x) {
+      xo=x^ans;
+      an=x&ans;
+      if (xo>0&&an>0)break;
+      ans=ans<<1;
+    }
+    xo=x^ans;
+    cout<<(xo<=0?ans+1:ans)<<endl;
+  }
+}
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
   /*freopen("whereami.out", "w", stdout);*/
