@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Two Pointers
+// Contest: BFS: Breadth First Search
 // Judge: Virtual Judge
-// URL: https://vjudge.net/contest/667524#problem/A
-// Memory Limit: 256
-// Time Limit: 2000
-// Start: 06 ديس, 2024 04:13:33 م
+// URL: https://vjudge.net/contest/667555#problem/A
+// Memory Limit: 1536
+// Time Limit: 1000
+// Start: 12 ديس, 2024 12:37:58 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -75,27 +75,18 @@ vi primeFactors(int n) {
   return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-
+bool isValid(int x, int y){
+  return x>=0&&x<8&&y>=0&&y<8;
+}
 void solve() {
-  int n, l, r;cin>>n>>l>>r;
-  vi v(n);cin>>v;
-  debug(v);
-  sort(all(v));
-  int ans=0;
-  for (int i = 0; i < n; i++) {
-    ans+=upper_bound(all(v), r-v[i])-v.begin();
-    ans-=lower_bound(all(v), l-v[i])-v.begin();
-    if(l<=2*v[i] && 2*v[i]<=r)
-      ans--;
-  }
-  cout<<ans/2<<endl;
+
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
   /*freopen("whereami.out", "w", stdout);*/
   fastio
     int t = 1;
-  cin>>t;
+  /*cin>>t;*/
   while (t--)
     solve();
   return 0;

@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Two Pointers
-// Judge: Virtual Judge
-// URL: https://vjudge.net/contest/667524#problem/A
-// Memory Limit: 256
-// Time Limit: 2000
-// Start: 06 ديس, 2024 04:13:33 م
+// Contest: CSES Problem Set
+// Judge: CSES
+// URL: https://cses.fi/problemset/task/1163
+// Memory Limit: 512
+// Time Limit: 1000
+// Start: 12 ديس, 2024 05:29:44 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -77,25 +77,31 @@ vi primeFactors(int n) {
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-  int n, l, r;cin>>n>>l>>r;
-  vi v(n);cin>>v;
-  debug(v);
-  sort(all(v));
-  int ans=0;
+  int x, n;cin>>x>>n;
+  set<int> positions;
+  multiset<int> lenghts;
+  positions.insert(0);
+  positions.insert(x);
+  lenghts.insert(x);
+  int dump;
   for (int i = 0; i < n; i++) {
-    ans+=upper_bound(all(v), r-v[i])-v.begin();
-    ans-=lower_bound(all(v), l-v[i])-v.begin();
-    if(l<=2*v[i] && 2*v[i]<=r)
-      ans--;
+    cin>>dump;
+    positions.insert(dump);
+    auto it=positions.find(dump);
+    int nextVal=*next(it);
+    int prevVal=*prev(it);
+    lenghts.erase(lenghts.find(nextVal-prevVal));
+    lenghts.insert(dump-prevVal);
+    lenghts.insert(nextVal-dump);
+    cout<<*lenghts.rbegin()<<endl;
   }
-  cout<<ans/2<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
   /*freopen("whereami.out", "w", stdout);*/
   fastio
     int t = 1;
-  cin>>t;
+  /*cin>>t;*/
   while (t--)
     solve();
   return 0;
