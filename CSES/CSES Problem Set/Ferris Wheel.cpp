@@ -76,22 +76,19 @@ vi primeFactors(int n) {
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-  int n, x;
-  cin >> n >> x;
-  vector<int> v(n);
-  cin>>v;
-  sort(v.begin(), v.end());
-  int left = 0, right = n - 1;
-  int box = 0;
-  while (left <= right) {
-    if (v[left] + v[right] <= x) {
-      left++;
+  int n, x;cin>>n>>x;
+  vi v(n);cin>>v;
+  sort(all(v));
+  int l=0,r=n-1;
+  int count=0;
+  while (l<=r) {
+    if(v[l]+v[r]<=x){
+      l++;
     }
-    right--;
-    box++;
+    r--;
+    count++;
   }
-
-  cout << box << endl;
+  cout<<count<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/

@@ -76,25 +76,22 @@ vi primeFactors(int n) {
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-  int n, m, k;cin>>n>>m>>k;
-  vi app(n);cin>>app;
-  vi flat(m);cin>>flat;
-  sort(all(app));
-  sort(all(flat));
-  int i=0,j=0;
-  int matches = 0;
-  while(i<n && j<m){
-    if(app[i] <= flat[j] + k && app[i] >= flat[j] - k){
-      i++;
-      j++;
-      matches++;
-    }else if(app[i] - k > flat[j]){
-      j++;
-    }else {
-      i++;
+  int n,m,k;cin>>n>>m>>k;
+  vi vn(n);cin>>vn;
+  vi vm(m);cin>>vm;
+  sort(all(vn));
+  sort(all(vm));
+  int l1=0, l2=0,count=0;
+  while (l1<n&&l2<m) {
+    if(vm[l2]<=vn[l1]+k&&vm[l2]>=vn[l1]-k){
+      l1++;l2++;count++;
     }
+    else if(vm[l2]<abs(vn[l1]-k))
+      l2++;
+    else if(vm[l2]>abs(vn[l1]+k))
+      l1++;
   }
-  cout<<matches<<endl;
+  cout<<count<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/

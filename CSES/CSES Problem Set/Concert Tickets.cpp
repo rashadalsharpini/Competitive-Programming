@@ -76,28 +76,26 @@ vi primeFactors(int n) {
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-  int n, m;
-  cin >> n >> m;
-  map<int, int> priceMap;    
-  int dump;
-  for (int i = 0; i < n; ++i) {
-    cin >> dump;
-    priceMap[dump]++;
+  int n, m;cin>>n>>m;
+  multiset<int>tic;
+  int price;
+  for (int i = 0; i < n; i++) {
+    cin>>price;
+    tic.insert(price);
   }
-  int pay;
-  for (int i = 0; i < m; ++i) {
-    cin >> pay;
-    auto it = priceMap.upper_bound(pay);
-    if (it != priceMap.begin()) {
-      --it;
-      cout << it->first << endl;
-      if (--(it->second) == 0) {
-        priceMap.erase(it);
-      }
-    } else {
-      cout << -1 << endl;
+  int customer;
+  for (int i = 0; i < m; i++) {
+    cin>>customer;
+    auto it=tic.upper_bound(customer);
+    if(it==tic.begin())
+      cout<<-1<<endl;
+    else {
+      it--;
+      cout<<*it<<endl;
+      tic.erase(it);
     }
   }
+  
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/

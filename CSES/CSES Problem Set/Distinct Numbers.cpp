@@ -77,10 +77,12 @@ vi primeFactors(int n) {
 
 void solve() {
   int n;cin>>n;
-  vi v(n);cin>>v;
   set<int> s;
-  for(int i = 0;i<n;++i)
-    s.insert(v[i]);
+  int x;
+  for (int i = 0; i < n; i++) {
+    cin>>x;
+    s.insert(x);
+  }
   cout<<s.size()<<endl;
 
 }

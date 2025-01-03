@@ -75,25 +75,26 @@ vi primeFactors(int n) {
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 void solve() {
-    int n;
-    cin >> n;
-    vector<pair<int, int>> events;
-    int a, b;
-    for (int i = 0; i < n; ++i) {
-        cin >> a >> b;
-        events.push_back({a, 1});  // Arrival event (+1 customer)
-        events.push_back({b, -1}); // Departure event (-1 customer)
-    }
-    debug(events);
-    sort(events.begin(), events.end());
-    debug(events);
-    int current = 0, big = 0;
-    for (auto event : events) {
-        current += event.second;
-        big = max(big, current);
-    }
-    
-    cout << big << endl;
+  int n;cin>>n;
+  map<int, int> mp;
+  int a;
+  for (int i = 0; i < n*2 ; i++) {
+    cin>>a;
+    mp.insert({a, (i%2?-1:1)});
+  }
+  debug(mp);
+  vi v;
+  for(auto& i : mp){
+    v.pb(i.second);
+  }
+  debug(v);
+  int big=INT_MIN;
+  for(int i =1;i<v.size();i++){
+    v[i]+=v[i-1];
+    big = (v[i]>big?v[i]:big);
+  }
+  debug(v);
+  cout<<big<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
