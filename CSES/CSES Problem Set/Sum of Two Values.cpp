@@ -74,36 +74,31 @@ vi primeFactors(int n) {
     return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-
 void solve() {
-  int n, sum;
-  cin>>n>>sum;
-  int left = 0, right = n-1;
-  vector<pair<int, int>> vp;
+  int n, x;cin>>n>>x;
+  vector<pair<int, int>> mp;
   int dump;
-  for(int i =0;i<n;++i){
+  for (int i = 0; i < n; i++) {
     cin>>dump;
-    vp.pb({dump, i+1});
+    mp.pb({dump, i+1});
   }
-  sort(all(vp));
-  debug(vp);
-  dump = 0;
-  bool shit = true;
-  while(left<right){
-    dump=vp[left].f+vp[right].f;
-    if(dump==sum){
-      /*int l = ((vp[left].s<vp[right].s)?vp[left].s:vp[right].s);*/
-      /*int r = ((vp[left].s>vp[right].s)?vp[left].s:vp[right].s);*/
-      /*cout<<l<<" "<<r<<endl;*/
-      cout << vp[left].second << " " << vp[right].second << endl;shit=false;
+  sort(all(mp));
+  int l=0, r=n-1;
+  dump=0;
+  bool shit=true;
+  while (l<r) {
+    if(mp[l].f+mp[r].f>x){
+      r--;
+    }else if (mp[l].f+mp[r].f<x) {
+      l++;
+    }else {
+      cout<<mp[l].s<<" "<<mp[r].s<<endl;
+      shit = false;
       break;
-    }else if(dump<sum)
-      left++;
-    else 
-      right--;
+    }
   }
-  if(shit)
-    cout<<"IMPOSSIBLE"<<endl;
+  cout<<(shit?"IMPOSSIBLE":"")<<endl;
+  debug(mp);
 }
 int32_t main() {
     /*freopen("whereami.in", "r", stdin);*/

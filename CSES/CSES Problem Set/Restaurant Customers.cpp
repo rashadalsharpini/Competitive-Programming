@@ -84,9 +84,8 @@ void solve() {
   }
   debug(mp);
   vi v;
-  for(auto& i : mp){
+  for(auto& i : mp) 
     v.pb(i.second);
-  }
   debug(v);
   int big=INT_MIN;
   for(int i =1;i<v.size();i++){
