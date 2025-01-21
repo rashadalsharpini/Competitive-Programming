@@ -1,10 +1,10 @@
 // ﷽
-// Contest: Codeforces Round 970 (Div. 3)
-// Judge: Codeforces
-// URL: https://codeforces.com/contest/2008/problem/0
-// Memory Limit: 256
+// Contest: CSES Problem Set
+// Judge: CSES
+// URL: https://cses.fi/problemset/task/2162
+// Memory Limit: 512
 // Time Limit: 1000
-// Start: 01 سبت, 2024 05:35:51 م
+// Start: 14 ينا, 2025 10:03:50 م
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,11 +17,12 @@ using namespace std;
 #endif
 #define fastio                                                               \
   ios_base::sync_with_stdio(false);                                            \
-  cin.tie(NULL);
+cin.tie(NULL);
 
 #define int long long
 #define double long double
 #define all(a) (a).begin(), (a).end()
+#define allr(a) (a).rbegin(), (a).rend()
 #define sz(a) (int)(a).size()
 #define pb push_back
 #define mp make_pair
@@ -46,65 +47,58 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
     output << x << " ";
   return output;
 }
-int MOD = 1e9+7;
+const int MOD = 1e9+7;
 int fast_power(int a, int b) {
-    int res = 1;
-    while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
-        b >>= 1;
-    }
-    return res;
+  int res = 1;
+  while (b) {
+    if (b & 1) res *= a % MOD;
+    a *= a % MOD;
+    b >>= 1;
+  }
+  return res;
 }
 vi primeFactors(int n) {
-    vi factors;
-    while (n % 2 == 0) {
-        factors.push_back(2);
-        n /= 2;
+  vi factors;
+  while (n % 2 == 0) {
+    factors.push_back(2);
+    n /= 2;
+  }
+  for (int i = 3; i <= sqrt(n); i += 2) {
+    while (n % i == 0) {
+      factors.push_back(i);
+      n /= i;
     }
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
-        }
-    }
-    if (n > 2) {
-        factors.push_back(n);
-    }
-    return factors;
+  }
+  if (n > 2) {
+    factors.push_back(n);
+  }
+  return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-    int a, b;
-    cin >> a >> b;
-    if (a == 0 && b == 0) {
-        yes;
-        return;
-    }
-    if (b == 0 && a % 2 != 0) {
-        no;
-        return;
-    }
-    if (a == 0 && b % 2 != 0) {
-        no;
-        return;
-    }
-    int totalSum = a + 2 * b;
-    if (totalSum % 2 != 0) {
-        no;
-        return;
-    }
-    yes;
+  int n;cin>>n;
+  queue<int> q;
+  vi v;
+  for(int i=1;i<=n;++i)
+    q.push(i);
+  while (!q.empty()) {
+    q.push(q.front());
+    q.pop();
+    v.push_back(q.front());
+    q.pop();
+  }
+  for(int i:v)
+    cout<<i<<" ";
+  cout<<endl;
 }
-
 int32_t main() {
-    /*freopen("whereami.in", "r", stdin);*/
-    /*freopen("whereami.out", "w", stdout);*/
-    fastio
+  /*freopen("whereami.in", "r", stdin);*/
+  /*freopen("whereami.out", "w", stdout);*/
+  fastio
     int t = 1;
-    cin>>t;
-    while (t--)
-        solve();
-    return 0;
+  /*cin>>t;*/
+  while (t--)
+    solve();
+  return 0;
 }
