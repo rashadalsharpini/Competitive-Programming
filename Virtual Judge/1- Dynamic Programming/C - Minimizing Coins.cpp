@@ -75,9 +75,24 @@ vi primeFactors(int n) {
   return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-
+int n, x;
+int memo[1000001];
+int v[101];
+int dp(int c){
+  if(c<0) return 1e18;
+  else if(c==0) return 0;
+  if(memo[c]!=-1) return memo[c];
+  int ans = 1e18;
+  for (int i = 0; i < n; i++) {
+    ans = min(ans, 1+ dp(c - v[i]));
+  }
+  return memo[c] = ans;
+}
 void solve() {
-
+  cin>>n>>x;
+  for (int i = 0; i < n; i++)cin>>v[i];
+  memset(memo, -1, sizeof memo);
+  cout<<(dp(x) == 1e18?-1:dp(x))<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
