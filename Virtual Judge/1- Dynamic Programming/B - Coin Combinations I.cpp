@@ -84,7 +84,6 @@ int dp(int c){
   if(memo[c] != -1) return memo[c];
   int count = 0;
   for(int i=0;i<n;i++){
-    /*count += (dp(i, c+v[i]) + dp(i+1, c) + dp(i+1, c+v[i]))% MOD;*/
     count = (count + dp(c+v[i]))%MOD;
   }
   return memo[c] = count;

@@ -77,6 +77,18 @@ vi primeFactors(int n) {
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
+  int n;cin>>n;
+  int count = 0;
+  char max_digit;
+  while(n!=0){
+    string st = to_string(n);
+    max_digit = '0';
+    for(char c:st)
+      max_digit = max(max_digit, c);
+    n-=(max_digit-'0');
+    count++;
+  }
+  cout<<count<<endl;
 
 }
 int32_t main() {

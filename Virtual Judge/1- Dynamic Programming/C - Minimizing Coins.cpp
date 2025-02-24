@@ -80,7 +80,7 @@ int memo[1000001];
 int v[101];
 int dp(int c){
   if(c<0) return 1e18;
-  else if(c==0) return 0;
+  if(c==0) return 0;
   if(memo[c]!=-1) return memo[c];
   int ans = 1e18;
   for (int i = 0; i < n; i++) {
