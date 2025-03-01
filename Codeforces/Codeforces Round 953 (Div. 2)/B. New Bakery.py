@@ -36,24 +36,24 @@ def find_mex(S):
 #     a[i] += a[i - 1]
 
 def solve():
-    print(isprime(29))
-    # n, a, b = map(int, input().split())
-    # profit = 0
-    # while b > a and n != 0:
-    #     profit += b
-    #     b -= 1
-    #     n -= 1
-    # profit += (n * a)
-    # print(profit)
-    # dif = b - a + 1
-    # # print("DIF", dif)
-    # if dif <= 0:
-    #     print(a*n)
-    #     return
-    # if dif > n:
-    #     dif = n
-    # z=((dif * (dif + 1)) // 2)
-    # print((n - dif) * a + ( b * dif) + dif - z)
+    # print(isprime(29))
+    n, a, b = map(int, input().split())
+    profit = 0
+    while b > a and n != 0:
+        profit += b
+        b -= 1
+        n -= 1
+    profit += (n * a)
+    print(profit)
+    dif = b - a + 1
+    # print("DIF", dif)
+    if dif <= 0:
+        print(a*n)
+        return
+    if dif > n:
+        dif = n
+    z=((dif * (dif + 1)) // 2)
+    print((n - dif) * a + ( b * dif) + dif - z)
 
 
 if __name__ == '__main__':

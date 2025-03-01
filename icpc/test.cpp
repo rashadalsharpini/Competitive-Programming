@@ -1,11 +1,3 @@
-// ﷽
-// Contest: 1- Dynamic Programming
-// Judge: Virtual Judge
-// URL: https://vjudge.net/contest/694790#problem/B
-// Memory Limit: 512
-// Time Limit: 1000
-// Start: Thu 20 Feb 2025 06:06:11 PM EET
-//
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef Rashad
@@ -16,7 +8,7 @@ using namespace std;
 #define debug_bits(...) 0
 #endif
 #define fastio                                                               \
-  ios_base::sync_with_stdio(false);                                            \
+ios_base::sync_with_stdio(false);                                            \
 cin.tie(NULL);
 
 #define int long long
@@ -39,12 +31,12 @@ const int dy[]{1, 0, -1, 0, -1, 1, -1, 1};
 
 template <typename T> istream &operator>>(istream &input, vector<T> &data) {
   for (T &x : data)
-    input >> x;
+  input >> x;
   return input;
 }
 template <typename T> ostream &operator<<(ostream &output, const vector<T> &data) {
   for (const T &x : data)
-    output << x << " ";
+  output << x << " ";
   return output;
 }
 const int MOD = 1e9+7;
@@ -75,31 +67,18 @@ vi primeFactors(int n) {
   return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-int n, x;
-int memo[1000001];
-int v[101];
-int dp(int c){
-  if(c>x) return 0;
-  if(c==x) return 1;
-  if(memo[c] != -1) return memo[c];
-  int count = 0;
-  for(int i=0;i<n;i++){
-    count = (count + dp(c+v[i]))%MOD;
-  }
-  return memo[c] = count;
-}
+
 void solve() {
-  cin>>n>>x;
-  for (int i = 0; i < n; i++)cin>>v[i];
-  memset(memo, -1, sizeof memo);
-  cout<<dp(0)<<endl;
+  int x, y;
+  cin >> x >> y;
+  cout << (int)(y * (double)log10(x) + 1e-12) + 1 <<endl ;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
   /*freopen("whereami.out", "w", stdout);*/
   fastio
-    int t = 1;
-  /*cin>>t;*/
+  int t = 1;
+  cin>>t;
   while (t--)
     solve();
   return 0;

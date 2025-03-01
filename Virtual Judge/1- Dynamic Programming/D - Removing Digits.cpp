@@ -75,20 +75,34 @@ vi primeFactors(int n) {
   return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-
+int memo[1000001]; 
+int dp(int n) {
+    if (n == 0) return 0;  
+    if (memo[n] != -1) return memo[n];
+    string s = to_string(n);
+    int min_steps = INT_MAX;
+    for (char c : s) {
+        int digit = c - '0';
+        if (digit > 0) 
+            min_steps = min(min_steps, 1 + dp(n - digit));
+    }
+    return memo[n] = min_steps;
+}
 void solve() {
   int n;cin>>n;
-  int count = 0;
-  char max_digit;
-  while(n!=0){
-    string st = to_string(n);
-    max_digit = '0';
-    for(char c:st)
-      max_digit = max(max_digit, c);
-    n-=(max_digit-'0');
-    count++;
-  }
-  cout<<count<<endl;
+  /*int count = 0;*/
+  /*char max_digit;*/
+  /*while(n!=0){*/
+  /*  string st = to_string(n);*/
+  /*  max_digit = '0';*/
+  /*  for(char c:st)*/
+  /*    max_digit = max(max_digit, c);*/
+  /*  n-=(max_digit-'0');*/
+  /*  count++;*/
+  /*}*/
+  /*cout<<count<<endl;*/ 
+  memset(memo, -1, sizeof memo);
+  cout<<dp(n)<<endl;
 
 }
 int32_t main() {
