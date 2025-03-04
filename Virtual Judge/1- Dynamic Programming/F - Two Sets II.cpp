@@ -93,7 +93,7 @@ void solve() {
     return;
   }
   dump=total/2;
-  cout<<(dp(1, 0)/2)%MOD<<endl;
+  cout<<(dp(1, 0) * 500000004)%MOD<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
