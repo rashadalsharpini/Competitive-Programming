@@ -75,9 +75,25 @@ vi primeFactors(int n) {
   return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
-
+int n;
+int dump;
+int memo[501][125251];
+int dp(int i, int sum){
+  if(sum==dump) return 1;
+  if(sum>dump || i>n) return 0;
+  if(~memo[i][sum]) return memo[i][sum];
+  return memo[i][sum]=(dp(i+1, i+sum)+dp(i+1, sum)) % MOD;
+}
 void solve() {
-
+  cin>>n;
+  memset(memo, -1, sizeof memo);
+  int total = ((n+1)*n)/2;
+  if(total%2){
+    cout<<0<<endl;
+    return;
+  }
+  dump=total/2;
+  cout<<(dp(1, 0)/2)%MOD<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
