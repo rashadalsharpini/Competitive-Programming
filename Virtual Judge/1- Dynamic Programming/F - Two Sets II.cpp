@@ -51,8 +51,8 @@ const int MOD = 1e9+7;
 int fast_power(int a, int b) {
   int res = 1;
   while (b) {
-    if (b & 1) res *= a % MOD;
-    a *= a % MOD;
+    if (b & 1) res = (res * a)%MOD;
+    a = (a*a)% MOD;
     b >>= 1;
   }
   return res;
@@ -93,7 +93,7 @@ void solve() {
     return;
   }
   dump=total/2;
-  cout<<(dp(1, 0) * 500000004)%MOD<<endl;
+  cout<<(dp(1, 0) * fast_power(2, MOD-2))%MOD<<endl;
 }
 int32_t main() {
   /*freopen("whereami.in", "r", stdin);*/
