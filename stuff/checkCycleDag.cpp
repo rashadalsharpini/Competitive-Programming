@@ -52,7 +52,10 @@ void solve() {
         }
         vis[p] = 1;
     };
-    dfs(1);
+    for (int i = 0; i < nodes; i++) {
+        if(vis[i]==0)dfs(i);
+    }
+    // dfs(1);
     cout<<(noCycle?"no cycle":"cycle")<<endl;
 }
 
