@@ -18,7 +18,7 @@ using namespace std;
 #endif
 #define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
 
-// #define int long long
+#define int long long
 #define double long double
 #define all(a) (a).begin(), (a).end()
 #define allr(a) (a).rbegin(), (a).rend()
@@ -58,10 +58,8 @@ void solve() {
         if(i==n||j==m||i<0||j<0) return;
         if(vis[i][j]||mat[i][j]=='#') return;
         vis[i][j] = true;
-        dfs(i +1,j);
-        dfs(i, j+1);
-        dfs(i-1, j);
-        dfs(i, j-1);
+        dfs(i+1, j);dfs(i, j+1);
+        dfs(i-1, j);dfs(i, j-1);
     };
     int rooms = 0;
     for (int i = 0; i < n; i++)
@@ -71,7 +69,6 @@ void solve() {
                 rooms++;
             }
     cout<<rooms<<endl;
-
 }
 int32_t main() {
     /*freopen("whereami.in", "r", stdin);*/
