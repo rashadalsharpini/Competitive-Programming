@@ -1,12 +1,13 @@
 // ﷽
-// Contest: CSES Problem Set
-// Judge: CSES
-// URL: https://cses.fi/problemset/task/1193
-// Memory Limit: 512
+// Contest: Codeforces Round 1024 (Div. 2)
+// Judge: Codeforces
+// URL: https://codeforces.com/contest/2102/problem/B
+// Memory Limit: 256
 // Time Limit: 1000
-// Start: Mon 05 May 2025 06:11:02 PM EEST
+// Start: Sun 11 May 2025 06:14:20 PM EEST
 //
 #include <bits/stdc++.h>
+#include <cstdlib>
 using namespace std;
 #ifdef Rashad
 #include "debug.hpp"
@@ -19,8 +20,8 @@ using namespace std;
 
 #define int long long
 #define double long double
-#define all(a) (a).begin(), (a).end()
-#define allr(a) (a).rbegin(), (a).rend()
+#define aint(a) (a).begin(), (a).end()
+#define aintr(a) (a).rbegin(), (a).rend()
 #define sz(a) (int)(a).size()
 #define pb push_back
 #define mp make_pair
@@ -30,6 +31,8 @@ using namespace std;
 #define pi pair<int,int>
 #define OO 2e9
 #define endl "\n"
+const int dx[]{0, 1, 0, -1, -1, -1, 1, 1};
+const int dy[]{1, 0, -1, 0, -1, 1, -1, 1};
 
 template <typename T> istream &operator>>(istream &input, vector<T> &data) {
     for (T &x : data)
@@ -44,30 +47,22 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
 const int MOD = 1e9+7;
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
-//             l  d  r   u  ur  ul  dr dl
-const int dx[]{0, 1, 0, -1, -1, -1, 1, 1};//i
-const int dy[]{1, 0, -1, 0, -1, 1, -1, 1};//j
 void solve() {
-    int n, m;cin>>n>>m;
-    vector<vector<char>> mat(n+1, vector<char>(m+1));
-    pi start, end;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++){
-            cin>>mat[i][j];
-            if(mat[i][j]=='A')
-                start.first=i, start.second=j;
-            if(mat[i][j]=='B')
-                end.first=i, end.second=j;
-        }
-    vector<vector<bool>> vis(n+1, vector<bool>(m+1));
-    debug(mat);
+    int n;
+    cin >> n;
+    vi v(n);cin>>v;
+    int a = llabs(v[0]);
+    int small = 0;
+    for (int i = 1; i < n; i++)
+        if (llabs(v[i]) < a) small++;
+    cout<<(small<=n/2?"YES":"NO")<<endl;
 }
 int32_t main() {
     /*freopen("whereami.in", "r", stdin);*/
     /*freopen("whereami.out", "w", stdout);*/
     fastio
     int t = 1;
-    /*cin>>t;*/
+    cin>>t;
     while (t--)
         solve();
     return 0;
