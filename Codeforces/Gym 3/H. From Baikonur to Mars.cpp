@@ -1,16 +1,15 @@
 // ﷽
-// Contest: Gym 1
+// Contest: Gym 3
 // Judge: Codeforces
-// URL: https://codeforces.com/group/2QN7VVtg4T/contest/618800/problem/J
+// URL: https://codeforces.com/group/2QN7VVtg4T/contest/619475/problem/H
 // Memory Limit: 256
 // Time Limit: 1000
-// Start: 29 يون, 2025 01:43:48 م
+// Start: 03 يول, 2025 02:23:23 م
 //
-#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef Rashad
-// #include "debug.hpp"
+#include "debug.hpp"
 #else
 #define debug(...) 0
 #define debug_itr(...) 0
@@ -48,16 +47,16 @@ const int MOD = 1e9+7;
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
-    int n, q;cin>>n>>q;
-    vector<string> v(n);cin>>v;
-    sort(all(v));
-    string x;
-    while(q--){
+    int n;cin>>n;
+    bool odd = false;
+    int mx=0;
+    int x;
+    for(int i=0;i<n;++i){
         cin>>x;
-        auto lower = lower_bound(all(v),x);
-        auto upper = lower_bound(all(v), x+char('z'+1));
-        cout<<upper-lower<<endl;
+        mx = max(mx, x);
+        if(x&1)odd= true;
     }
+    cout<<(!odd||mx==1?1:2)<<endl;
 
 }
 int32_t main() {

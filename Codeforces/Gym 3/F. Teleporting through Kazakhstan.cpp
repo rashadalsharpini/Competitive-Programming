@@ -1,16 +1,15 @@
 // ﷽
-// Contest: Gym 1
+// Contest: Gym 3
 // Judge: Codeforces
-// URL: https://codeforces.com/group/2QN7VVtg4T/contest/618800/problem/J
+// URL: https://codeforces.com/group/2QN7VVtg4T/contest/619475/problem/F
 // Memory Limit: 256
 // Time Limit: 1000
-// Start: 29 يون, 2025 01:43:48 م
+// Start: 03 يول, 2025 03:28:29 م
 //
-#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef Rashad
-// #include "debug.hpp"
+#include "debug.hpp"
 #else
 #define debug(...) 0
 #define debug_itr(...) 0
@@ -47,17 +46,23 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
 const int MOD = 1e9+7;
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
+int v[1001];
+int n;
+int cost=0;
+int rec(int i, int lsttel){
+    if(i==n-1) return 0;
+    //visit
+    cost+=abs(v[i]-v[i+1]);
+    rec(i+1, lsttel);
+    //teleport
+    cost+=abs(lsttel-v[i+1]);
+}
 void solve() {
-    int n, q;cin>>n>>q;
-    vector<string> v(n);cin>>v;
-    sort(all(v));
-    string x;
-    while(q--){
-        cin>>x;
-        auto lower = lower_bound(all(v),x);
-        auto upper = lower_bound(all(v), x+char('z'+1));
-        cout<<upper-lower<<endl;
+    cin>>n;
+    for(int i =0;i<n;++i){
+        cin>>v[i];
     }
+
 
 }
 int32_t main() {
